@@ -1,0 +1,40 @@
+root@David:~# sudo -u postgres psql
+could not change directory to "/root": Permission denied
+psql (14.2 (Ubuntu 14.2-1.pgdg18.04+1), server 13.6 (Ubuntu 13.6-1.pgdg18.04+1))
+Type "help" for help.
+
+postgres=# create database vida2db
+postgres-# ;
+WARNING:  could not flush dirty data: Function not implemented
+CREATE DATABASE
+postgres=# create user vida with encrypted password 'vidapassword';
+CREATE ROLE
+postgres=# grant all privileges on database vida2db to vida;
+GRANT
+postgres=# \l
+                              List of databases
+   Name    |  Owner   | Encoding | Collate |  Ctype  |   Access privileges
+-----------+----------+----------+---------+---------+-----------------------
+ mytestdb  | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =Tc/postgres         +
+           |          |          |         |         | postgres=CTc/postgres+
+           |          |          |         |         | david=CTc/postgres
+ postgres  | postgres | UTF8     | C.UTF-8 | C.UTF-8 |
+ template0 | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +
+           |          |          |         |         | postgres=CTc/postgres
+ template1 | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +
+           |          |          |         |         | postgres=CTc/postgres
+ test      | postgres | UTF8     | C.UTF-8 | C.UTF-8 |
+ vida2db   | postgres | UTF8     | C.UTF-8 | C.UTF-8 | =Tc/postgres         +
+           |          |          |         |         | postgres=CTc/postgres+
+           |          |          |         |         | vida=CTc/postgres
+(7 rows)
+
+postgres=# \du
+                                   List of roles
+ Role name |                         Attributes                         | Member of
+-----------+------------------------------------------------------------+-----------
+ david     |                                                            | {}
+ postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ vida      |                                                            | {}
+
+postgres=#
